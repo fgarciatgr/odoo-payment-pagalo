@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--
+            Heredamos de la vista de formulario base de los métodos de pago
+            para añadir nuestros campos específicos de Pagalo.
+        -->
+        <record id="acquirer_form_pagalo" model="ir.ui.view">
+            <field name="name">payment.acquirer.form.pagalo</field>
+            <field name="model">payment.acquirer</field>
+            <field name="inherit_id" ref="payment.acquirer_form"/>
+            <field name="arch" type="xml">
+                <!-- 
+                    Usamos xpath para encontrar el lugar correcto donde insertar nuestros campos.
+                    Los insertaremos dentro del grupo de 'Credenciales del Adquirente'.
+                -->
+                <xpath expr="//group[@name='acquirer_credentials']" position="inside">
+                    <!--
+                        Estos campos solo serán visibles si el proveedor es 'pagalo'.
+                        El atributo 'attrs' con la clave 'invisible' controla la visibilidad dinámica.
+                    -->
+                    <group attrs="{'invisible': [('provider', '!=', 'pagalo')]}">
+                        <field name="pagalo_api_key"/>
+                        <field name="pagalo_secret_key" password="True"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

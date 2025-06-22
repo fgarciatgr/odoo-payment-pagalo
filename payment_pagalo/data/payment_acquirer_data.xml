@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--
+            Este es el registro del 'Payment Acquirer' (Método de Pago) para Pagalo.
+            'noupdate="1"' significa que estos datos solo se cargarán la primera vez
+            que se instale el módulo. Si el usuario lo borra, no se volverá a crear
+            automáticamente en una actualización del módulo.
+        -->
+        <record id="payment_acquirer_pagalo" model="payment.acquirer">
+            <field name="name">Pagalo</field>
+            <field name="image" type="base64" file="payment_pagalo/static/src/img/pagalo_logo.png"/>
+            <field name="provider">pagalo</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="view_template_id" ref="payment_pagalo.pagalo_form"/>
+            <field name="description" type="html">
+                <p>
+                    Paga de forma segura con tu tarjeta de débito o crédito a través de Pagalo.
+                </p>
+            </field>
+            <!--
+                'redirect_form_view_id' es obsoleto en Odoo 15+ pero se mantiene por
+                compatibilidad. El flujo se maneja principalmente desde el modelo de Python.
+            -->
+            <field name="redirect_form_view_id" ref="payment.redirect_form"/>
+            <!-- Dejamos el método deshabilitado por defecto. El usuario debe activarlo manualmente. -->
+            <field name="state">disabled</field>
+            <field name="pre_msg"><![CDATA[
+                <p>Serás redirigido al sitio web de Pagalo para completar tu pago.</p>]]>
+            </field>
+            <field name="payment_flow">redirect</field>
+            <field name="country_ids" eval="[(6, 0, [ref('base.gt')])]"/>
+            <field name="payment_method_ids"
+                   eval="[(6, 0, [
+                ref('payment.payment_method_card'),
+            ])]"/>
+        </record>
+    </data>
+</odoo>

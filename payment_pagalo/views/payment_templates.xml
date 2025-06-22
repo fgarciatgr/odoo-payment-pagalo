@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Este archivo define la plantilla que Odoo muestra en la página de pago del sitio web.
+        La ID "pagalo_form" es la que referenciamos desde el archivo de datos.
+    -->
+    <template id="pagalo_form" name="Pagalo Form">
+        <p class="alert alert-info" role="alert">
+            Después de confirmar, serás redirigido al sitio seguro de Pagalo para completar tu pago.
+        </p>
+    </template>
+</odoo>
