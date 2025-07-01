@@ -24,4 +24,6 @@ Permite a los clientes pagar sus pedidos del sitio web a través de la plataform
     'application': True,
     'installable': True,
     'license': 'OPL-1',
+    'price': '100.00',
+    'currency': 'usd',
 }
