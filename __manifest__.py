@@ -10,7 +10,7 @@
 Este módulo integra Pagalo V2 como un método de pago en Odoo.
 Permite a los clientes pagar sus pedidos del sitio web a través de la plataforma de Pagalo.
     """,
-    'author': 'Francisco Garcia - Comercializadora l GR, S.A.',
+    'author': 'Comercializadora Textil GR, S.A.',
     'website': 'https://www.textilesgr.com', # Opcional
     'depends': [
         'payment',
